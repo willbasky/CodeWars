@@ -13,7 +13,7 @@ digpow n p | fromIntegral number / fromIntegral n == fromIntegral (number `div` 
 
 
 summator :: Integer -> [Integer] -> Integer
-summator _ [] = 0
+summator _ []     = 0
 summator p (x:xs) = x^p + summator (p+1) xs
 
 digsList :: Integer -> [Integer]
@@ -21,6 +21,6 @@ digsList 0 = []
 digsList x = x `mod` 10 : digsList (x `div` 10)
 
 -- best. И тут есть проверка делится ли число на число без остатка.
-digpow2 n p | sp `mod` n == 0  = sp `div` n
-            | otherwise        = -1
-  where sp = fromIntegral $ sum $ zipWith (^) (map digitToInt $ show n) [p..]
+-- digpow2 n p | sp `mod` n == 0  = sp `div` n
+--             | otherwise        = -1
+--   where sp = fromIntegral $ sum $ zipWith (^) (map digitToInt $ show n) [p..]
