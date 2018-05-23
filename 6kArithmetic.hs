@@ -13,7 +13,7 @@ findMissing = divi
 divi :: (Integral t) => [t] -> t
 divi []    = 0
 divi [_,_] = 0
-divi (x:y:z:zs) | (y - x) == (z - y) = divi (y:z:zs)
+divi (x:y:z:zs) | y - x == z - y = divi (y:z:zs)
                 | otherwise = if (y - x) > (z - y)
                                   then x + div (y - x) 2
                                   else y + div (z - y) 2

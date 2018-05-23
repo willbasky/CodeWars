@@ -9,7 +9,7 @@ import           Data.Maybe          (fromMaybe)
 findEvenIndex :: [Int] -> Int
 findEvenIndex arr = if null solution then -1 else head solution
   where
-    solution = filter (/=(-1)) $ foldr (\(x,y) acc -> if boolSum y arr then y:acc else (-1):acc) [] (zip arr [0..])
+    solution = filter (/=(-1)) $ foldr (\(_,y) acc -> if boolSum y arr then y:acc else (-1):acc) [] (zip arr [0..])
     boolSum y arr = sum (take y arr) == sum (drop (y+1) arr)
 
 -- best
@@ -20,4 +20,4 @@ findEvenIndex2 = fromMaybe (-1) . elemIndex True .
 -- scanl1 (+)  [20,10,-80,10,10,15,35] ~> [20,30,-50,-40,-30,-15,20]
 -- (zipWith (==) <$> scanl1 (+) <*> scanr1 (+)) [1,2,3,4,3,2,1] ~> [False,False,False,True,False,False,False]
 
--- ghci> (++) <$> ["ha","heh","hmm"] <*> ["?","!","."] ~> ["ha?","ha!","ha.","heh?","heh!","heh.","hmm?","hmm!","hmm."] 
+-- ghci> (++) <$> ["ha","heh","hmm"] <*> ["?","!","."] ~> ["ha?","ha!","ha.","heh?","heh!","heh.","hmm?","hmm!","hmm."]
